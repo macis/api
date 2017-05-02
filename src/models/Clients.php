@@ -134,7 +134,7 @@ class Clients extends Crud
             $sth->execute();
 
             $res['clients'] = $sth->fetchAll(\PDO::FETCH_ASSOC);
-        } catch( PDOException $Exception ) {
+        } catch( \PDOException $Exception ) {
             echo "error";
         }
 
@@ -144,7 +144,7 @@ class Clients extends Crud
             $sth = $pdo->prepare($sql);
             $sth->execute();
             $res['count'] = $sth->fetch()['nb'];
-        } catch( PDOException $Exception ) {
+        } catch( \PDOException $Exception ) {
             echo "error";
         }
         return $res;
