@@ -80,9 +80,7 @@ class Clients extends Crud
         $limit = (isset($limit) ? 20 : $limit);
 
         // récupère la page en cours
-        if (!$page) {
-            $page = 0;
-        }
+        if (!$page) { $page = 0; }
 
         // récupère les champs
         if (is_array($fields)) {
