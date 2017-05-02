@@ -4,13 +4,13 @@
 $container = $app->getContainer();
 
 // view renderer
-$container['renderer'] = function ($c) {
+$container['renderer'] = function (\Slim\Container $c) {
     $settings = $c->get('settings')['renderer'];
     return new Slim\Views\PhpRenderer($settings['template_path']);
 };
 
 // monolog
-$container['logger'] = function ($c) {
+$container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('settings')['logger'];
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
@@ -19,7 +19,7 @@ $container['logger'] = function ($c) {
 };
 
 // Register DB
-$container['db'] = function ($c) {
+$container['db'] = function (\Slim\Container $c) {
     $db = $c->get('settings')['db'];
     $pdo = new PDO(
         "mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'],
