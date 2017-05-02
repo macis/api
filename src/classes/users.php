@@ -9,7 +9,7 @@
 namespace macis\classes;
 
 
-class users
+class Users
 {
 
     public static function login($username, $password){
