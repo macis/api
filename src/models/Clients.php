@@ -12,12 +12,12 @@ namespace Models;
 class Clients extends Crud
 {
 
-    static $tablename = "clients";
-    static $idfield = "id";
-    static $deletedfield = "deleted";
-    static $sql_owner_field = "id_organization";
-    static $sql_owner_value = "10";
-    static $fields = array(
+    public static $tablename = "clients";
+    public static $idfield = "id";
+    public static $deletedfield = "deleted";
+    public static $sql_owner_field = "id_organization";
+    public static $sql_owner_value = "10";
+    public static $fields = array(
         'id',
         'social_number',
         'lastname',
@@ -80,9 +80,7 @@ class Clients extends Crud
         $limit = (isset($limit) ? 20 : $limit);
 
         // récupère la page en cours
-        if (!$page) {
-            $page = 0;
-        }
+        if (!$page) { $page = 0; }
 
         // récupère les champs
         if (is_array($fields)) {
@@ -98,22 +96,15 @@ class Clients extends Crud
 
         // construit la requête
         try {
-            $sql = "SELECT SQL_CALC_FOUND_ROWS ";
-            // $sql .= " * "; //id, firstname, lastname, title
-            $sql .= $fields;
-            $sql .= " FROM :tablename ";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS :fields FROM :tablename ";
             $sql .= " WHERE `id_organization` = :id_organization ";
             if (!empty($search)) {
                 $sql .= " AND MATCH(firstname,lastname) AGAINST (:search IN BOOLEAN MODE) ";
             }
-            $sql .= " ORDER BY lastname ";
-            $sql .= " LIMIT :start , :limit";
-
+            $sql .= " ORDER BY lastname LIMIT :start , :limit";
             $sql = str_replace(":tablename",self::$tablename, $sql );
-
-
+            $sql = str_replace(":fields",$fields, $sql );
             $sth = $pdo->prepare($sql);
-
             $start = $page * $limit;
 
             // binding
@@ -127,14 +118,12 @@ class Clients extends Crud
                     $item = "+%" . $item . "%";
                 });
                 $search = implode(" ", $search);
-
                 $sth->bindParam(':search', $search, \PDO::PARAM_STR);
             }
 
             $sth->execute();
-
             $res['clients'] = $sth->fetchAll(\PDO::FETCH_ASSOC);
-        } catch( PDOException $Exception ) {
+        } catch( \PDOException $Exception ) {
             echo "error";
         }
 
@@ -144,7 +133,7 @@ class Clients extends Crud
             $sth = $pdo->prepare($sql);
             $sth->execute();
             $res['count'] = $sth->fetch()['nb'];
-        } catch( PDOException $Exception ) {
+        } catch( \PDOException $Exception ) {
             echo "error";
         }
         return $res;

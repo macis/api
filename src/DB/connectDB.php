@@ -9,7 +9,7 @@
 namespace DB;
 
 
-class connectDB
+class ConnectDB
 {
     private static $pdo;
 

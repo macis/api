@@ -8,7 +8,7 @@
 
 namespace macis\classes;
 
-class clients
+class Clients
 {
 
     /**
