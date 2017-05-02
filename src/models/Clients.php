@@ -98,22 +98,14 @@ class Clients extends Crud
 
         // construit la requête
         try {
-            $sql = "SELECT SQL_CALC_FOUND_ROWS ";
-            // $sql .= " * "; //id, firstname, lastname, title
-            $sql .= $fields;
-            $sql .= " FROM :tablename ";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS " . $fields ." FROM :tablename ";
             $sql .= " WHERE `id_organization` = :id_organization ";
             if (!empty($search)) {
                 $sql .= " AND MATCH(firstname,lastname) AGAINST (:search IN BOOLEAN MODE) ";
             }
-            $sql .= " ORDER BY lastname ";
-            $sql .= " LIMIT :start , :limit";
-
+            $sql .= " ORDER BY lastname LIMIT :start , :limit";
             $sql = str_replace(":tablename",self::$tablename, $sql );
-
-
             $sth = $pdo->prepare($sql);
-
             $start = $page * $limit;
 
             // binding
@@ -127,12 +119,10 @@ class Clients extends Crud
                     $item = "+%" . $item . "%";
                 });
                 $search = implode(" ", $search);
-
                 $sth->bindParam(':search', $search, \PDO::PARAM_STR);
             }
 
             $sth->execute();
-
             $res['clients'] = $sth->fetchAll(\PDO::FETCH_ASSOC);
         } catch( \PDOException $Exception ) {
             echo "error";
