@@ -40,9 +40,13 @@ class Users extends Crud
             $sth->execute();
 
             $user = $sth->fetchALL(\PDO::FETCH_ASSOC);
+            if (!is_array($user)) {
+                return false;
+            }
             $_SESSION['user'] = $user[0];
+            return $user[0];
         } catch (\PDOException $e) {
-            $container->logger->debug("PDO ERROR". $e->getMessage(), $e->getTrace()) ;
+            return false;
         }
     }
 
