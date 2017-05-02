@@ -98,13 +98,14 @@ class Clients extends Crud
 
         // construit la requête
         try {
-            $sql = "SELECT SQL_CALC_FOUND_ROWS " . $fields ." FROM :tablename ";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS :fields FROM :tablename ";
             $sql .= " WHERE `id_organization` = :id_organization ";
             if (!empty($search)) {
                 $sql .= " AND MATCH(firstname,lastname) AGAINST (:search IN BOOLEAN MODE) ";
             }
             $sql .= " ORDER BY lastname LIMIT :start , :limit";
             $sql = str_replace(":tablename",self::$tablename, $sql );
+            $sql = str_replace(":fields",$fields, $sql );
             $sth = $pdo->prepare($sql);
             $start = $page * $limit;
 
