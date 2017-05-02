@@ -13,14 +13,14 @@ use PDOException;
 
 abstract class Crud
 {
-    static $tablename = "table";
-    static $idfield = "id";
-    static $sql_insert_special = "`created` = now()"; // ,`date_created` = now()
-    static $sql_update_special = "`updated` = now()"; // ,`date_updated` = now()
-    static $sql_delete_special = "`deleted` = now()"; // ,`date_deleted` = now()
-    static $sql_owner_field = "id_user";
-    static $sql_owner_value = "10";
-    static $fields = array();
+    public static $tablename = "table";
+    public static $idfield = "id";
+    public static $sql_insert_special = "`created` = now()"; // ,`date_created` = now()
+    public static $sql_update_special = "`updated` = now()"; // ,`date_updated` = now()
+    public static $sql_delete_special = "`deleted` = now()"; // ,`date_deleted` = now()
+    public static $sql_owner_field = "id_user";
+    public static $sql_owner_value = "10";
+    public static $fields = array();
 
 
 

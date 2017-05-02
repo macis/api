@@ -12,12 +12,12 @@ namespace Models;
 class Clients extends Crud
 {
 
-    static $tablename = "clients";
-    static $idfield = "id";
-    static $deletedfield = "deleted";
-    static $sql_owner_field = "id_organization";
-    static $sql_owner_value = "10";
-    static $fields = array(
+    public static $tablename = "clients";
+    public static $idfield = "id";
+    public static $deletedfield = "deleted";
+    public static $sql_owner_field = "id_organization";
+    public static $sql_owner_value = "10";
+    public static $fields = array(
         'id',
         'social_number',
         'lastname',

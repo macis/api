@@ -11,10 +11,10 @@ namespace Models;
 
 class Users extends Crud
 {
-    static $tablename = "users";
-    static $idfield = "id";
-    static $deletedfield = "deleted";
-    static $fields = array(
+    public static $tablename = "users";
+    public static $idfield = "id";
+    public static $deletedfield = "deleted";
+    public static $fields = array(
         'id',
         'username',
         'password',
