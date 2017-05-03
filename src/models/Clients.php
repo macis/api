@@ -73,7 +73,7 @@ class Clients extends Crud
         self::$sql_owner_value = $_SESSION['user']["id_organization"];
 
         $search = strtolower(iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $search));
-        $pdo = \DB\connectDB::getPDO();
+        $pdo = \DB\ConnectDB::getPDO();
 
         $res = array();
         // combien je veux de fiches par page
