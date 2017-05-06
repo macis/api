@@ -6,49 +6,6 @@ use macis\classes\Clients as Clients;
 class ClientsTest extends TestCase
 {
     /**
-     * Tests search
-     */
-    public function testSearchNok()
-    {
-        $ret = Clients::search(0, '');
-        $this->assertCount(0, $ret['clients']);
-    }
-
-    public function testSearchOk()
-    {
-        // small hack, sorry
-        $_SESSION['user']["id_organization"] = 1;
-        // return everything associated with organization 1
-        $ret = Clients::search(0, '');
-        $this->assertTrue(count($ret['clients']) > 0 );
-        // clear hack
-        unset ($_SESSION['user']);
-    }
-
-    /**
-     * Tests get
-     */
-    public function testGetNok()
-    {
-        // small hack, sorry
-        $_SESSION['user']["id_organization"] = 1;
-        $ret = Clients::get(0);
-        $this->assertNull($ret);
-        // clear hack
-        unset ($_SESSION['user']);
-    }
-
-    public function testGetOk()
-    {
-        // small hack, sorry
-        $_SESSION['user']["id_organization"] = 1;
-        $ret = Clients::get(1);
-        $this->assertCount(31, $ret);
-        // clear hack
-        unset ($_SESSION['user']);
-    }
-
-    /**
      * Tests post
      */
     public function testPostOk()
@@ -91,6 +48,50 @@ class ClientsTest extends TestCase
 
         $ret = Clients::post($post);
         $this->assertTrue($ret > 0);
+        // clear hack
+        unset ($_SESSION['user']);
+    }
+
+    /**
+     * Tests search
+     */
+    public function testSearchNok()
+    {
+        $_SESSION['user']["id_organization"] = 0;
+        $ret = Clients::search(0, '');
+        $this->assertCount(0, $ret['clients']);
+    }
+
+    public function testSearchOk()
+    {
+        // small hack, sorry
+        $_SESSION['user']["id_organization"] = 1;
+        // return everything associated with organization 1
+        $ret = Clients::search(0, '');
+        $this->assertTrue(count($ret['clients']) > 0 );
+        // clear hack
+        unset ($_SESSION['user']);
+    }
+
+    /**
+     * Tests get
+     */
+    public function testGetNok()
+    {
+        // small hack, sorry
+        $_SESSION['user']["id_organization"] = 1;
+        $ret = Clients::get(0);
+        $this->assertFalse($ret);
+        // clear hack
+        unset ($_SESSION['user']);
+    }
+
+    public function testGetOk()
+    {
+        // small hack, sorry
+        $_SESSION['user']["id_organization"] = 1;
+        $ret = Clients::get(1);
+        $this->assertCount(31, $ret);
         // clear hack
         unset ($_SESSION['user']);
     }

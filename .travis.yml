@@ -1,0 +1,19 @@
+dist: trusty
+sudo: required
+cache:
+  directories:
+    - $HOME/.composer/cache
+language: php
+php:
+  - '7.0'
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS demo;'
+  - mysql -u root --default-character-set=utf8 demo < database/database.sql
+before_script:
+  - composer self-update
+  - composer update
+script:
+  - vendor/bin/phpunit --configuration phpunit.travis.xml
+  
