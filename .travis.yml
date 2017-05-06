@@ -1,0 +1,17 @@
+language: php
+php:
+  - '7.0'
+  - '7.1'
+before_script:
+  - composer self-update
+  - composer update
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+  - mysql test < database/database.sql
+env:
+  - MYSQL_SERVER=127.0.0.1
+  - MYSQL_USER=root
+  - MYSQL_PASSWORD=
+  - MYSQL_DATABASE=test
