@@ -2,13 +2,15 @@ language: php
 php:
   - '7.0'
   - '7.1'
+env:
+  - MYSQL_SERVER=127.0.0.1 MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DATABASE=demo
+services:
+  - mysql
 before_script:
   - composer self-update
   - composer update
-services:
-  - mysql
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS demo;'
-  - mysql demo < database/database.sql
-env:
-  - MYSQL_SERVER=127.0.0.1 MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DATABASE=demo
+  - mysql -u root --default-character-set=utf8 demo < database/database.sql
+script:
+  - vendor/bin/phpunit
