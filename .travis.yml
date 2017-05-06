@@ -8,10 +8,7 @@ before_script:
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
-  - mysql test < database/database.sql
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS demo;'
+  - mysql demo < database/database.sql
 env:
-  - MYSQL_SERVER=127.0.0.1
-  - MYSQL_USER=root
-  - MYSQL_PASSWORD=
-  - MYSQL_DATABASE=test
+  - MYSQL_SERVER=127.0.0.1 MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DATABASE=demo
