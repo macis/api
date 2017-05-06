@@ -7,8 +7,8 @@
     </testsuites>
     <php>
         <env name="MYSQL_SERVER" value="127.0.0.1"/>
-        <env name="MYSQL_USER" value="user"/>
-        <env name="MYSQL_PASSWORD" value="secret"/>
+        <env name="MYSQL_USER" value="root"/>
+        <env name="MYSQL_PASSWORD" value=""/>
         <env name="MYSQL_DATABASE" value="demo"/>
     </php>
 </phpunit>

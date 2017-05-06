@@ -9,6 +9,8 @@
 namespace DB;
 
 
+use PHPUnit\Runner\Exception;
+
 class ConnectDB
 {
     private static $pdo;
@@ -28,7 +30,7 @@ class ConnectDB
                 $config['db']['pass']);
 
         } catch (\PDOException $e) {
-            return false;
+            throw new Exception('MYSQL ERROR : '.$e->getMessage());
         }
 
         return self::$pdo;

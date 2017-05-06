@@ -57,12 +57,14 @@ class Clients extends Crud
      * @return mixed
      */
     public static function getById($id) {
-        if (!isset($id)) {
-            return false;
+        if (isset($id)) {
+            $search = array('id' => $id);
+            $list = self::selectSimple($search);
+            if (is_array($list) && array_key_exists(0, $list)) {
+                return $list[0];
+            }
         }
-        $search = array('id' => $id);
-        $list = self::selectSimple($search);
-        return $list[0];
+        return false;
     }
 
     /**
@@ -73,7 +75,7 @@ class Clients extends Crud
         self::$sql_owner_value = $_SESSION['user']["id_organization"];
 
         $search = strtolower(iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $search));
-        $pdo = \DB\connectDB::getPDO();
+        $pdo = \DB\ConnectDB::getPDO();
 
         $res = array();
         // combien je veux de fiches par page

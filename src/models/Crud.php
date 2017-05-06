@@ -54,9 +54,9 @@ abstract class Crud
         }
 
         try {
-            $pdo = \DB\connectDB::getPDO();
+            $pdo = \DB\ConnectDB::getPDO();
 
-            $sql = str_replace(":tablename",self::$tablename, $sql );
+            $sql = str_replace(":tablename",static::$tablename, $sql );
             $sql = str_replace(":sql_owner_field",static::$sql_owner_field, $sql );
 
             $sth = $pdo->prepare($sql);
@@ -98,7 +98,7 @@ abstract class Crud
 
 
         try {
-            $pdo = \DB\connectDB::getPDO();
+            $pdo = \DB\ConnectDB::getPDO();
 
             $sql = str_replace(":tablename",static::$tablename, $sql );
             $sql = str_replace(":idfield",static::$idfield, $sql );
@@ -161,7 +161,7 @@ abstract class Crud
         }
 
         try {
-            $pdo = \DB\connectDB::getPDO();
+            $pdo = \DB\ConnectDB::getPDO();
 
             $sql = str_replace(":select",implode(',',$select), $sql );
             $sql = str_replace(":tablename",static::$tablename, $sql );
