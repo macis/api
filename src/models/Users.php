@@ -40,7 +40,7 @@ class Users extends Crud
             $sth->execute();
 
             $user = $sth->fetchALL(\PDO::FETCH_ASSOC);
-            if (!is_array($user[0])) {
+            if (!is_array($user) || !array_key_exists(0,$user) || !is_array($user[0])) {
                 unset($_SESSION['user']);
                 return false;
             }

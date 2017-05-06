@@ -1,12 +1,12 @@
 dist: trusty
 sudo: required
+cache:
+  directories:
+    - $HOME/.composer/cache
 language: php
 php:
   - '7.0'
   - '7.1'
-cache:
-  directories:
-    - $HOME/.composer/cache
 services:
   - mysql
 before_install:
@@ -16,3 +16,5 @@ before_script:
   - composer self-update
   - composer update
   - env | grep MYSQL
+script:
+  - phpunit --configuration phpunit.travis.xml
