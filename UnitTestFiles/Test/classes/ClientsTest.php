@@ -10,6 +10,7 @@ class ClientsTest extends TestCase
      */
     public function testSearchNok()
     {
+        $_SESSION['user']["id_organization"] = 0;
         $ret = Clients::search(0, '');
         $this->assertCount(0, $ret['clients']);
     }
@@ -33,7 +34,7 @@ class ClientsTest extends TestCase
         // small hack, sorry
         $_SESSION['user']["id_organization"] = 1;
         $ret = Clients::get(0);
-        $this->assertNull($ret);
+        $this->assertFalse($ret);
         // clear hack
         unset ($_SESSION['user']);
     }
