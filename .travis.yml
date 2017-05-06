@@ -8,11 +8,9 @@ env:
   - MYSQL_SERVER=127.0.0.1 MYSQL_USER=root MYSQL_PASSWORD= MYSQL_DATABASE=demo
 services:
   - mysql
-before_script:
-  - composer self-update
-  - composer update
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS demo;'
   - mysql -u root --default-character-set=utf8 demo < database/database.sql
-script:
-  - vendor/bin/phpunit
+before_script:
+  - composer self-update
+  - composer update
