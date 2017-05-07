@@ -49,45 +49,6 @@ class ClientsTest extends TestCase
         $this->assertTrue($ret > 0);
     }
 
-    public function testPostNok()
-    {
-        // small hack, sorry
-        $_SESSION['user']["id_organization"] = 1;
-        $post = array(
-            "social_number" => "",
-            "lastname" => "",
-            "birthname" => "",
-            "firstname" => "",
-            "title" => "",
-            "gender" => "",
-            "birthdate" => "",
-            "deathdate" => "",
-            "email" => "",
-            "address" => "",
-            "postal_code" => "",
-            "city" => "",
-            "country" => "",
-            "phone" => "",
-            "phone_mobile" => "",
-            "phone_pro" => "",
-            "job" => "",
-            "referal_medic" => "",
-            "social_collect" => "",
-            "social_insurance" => "",
-            "marital_status" => "",
-            "referal_person" => "",
-            "referal_person_phone" => "",
-            "comment" => "",
-            "history_medical" => "",
-            "history_surgical" => "",
-            "history_gynecological" => "",
-            "history_family" => "",
-            "allergy" => "",
-            "payment_status" => ""
-        );
-        $ret = Clients::post($post);
-        $this->assertFalse($ret);
-    }
 
     /**
      * Tests Put
