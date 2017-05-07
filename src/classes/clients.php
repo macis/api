@@ -17,9 +17,8 @@ class Clients
      * @return mixed
      *
      */
-    public static function search($page, $search)
+    public static function search($page, $search, $fields = "")
     {
-        $fields = "";
         $res = \Models\Clients::search($search, $page, 100, $fields);
         return $res;
     }

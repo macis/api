@@ -151,6 +151,25 @@ class ClientsTest extends TestCase
         $this->assertTrue(count($ret['clients']) > 0 );
     }
 
+    public function testSearchWithParameters()
+    {
+        // small hack, sorry
+        $_SESSION['user']["id_organization"] = 1;
+        // return everything associated with organization 1
+        $ret = Clients::search(0, 'test');
+        $this->assertTrue(count($ret['clients']) > 0 );
+    }
+
+    public function testSearchWithCustomFields()
+    {
+        // small hack, sorry
+        $_SESSION['user']["id_organization"] = 1;
+        // return everything associated with organization 1
+        $ret = Clients::search(0, '' , array('id'));
+        $this->assertTrue(count($ret['clients']) > 0 );
+    }
+
+
     /**
      * Tests get
      */
