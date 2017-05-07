@@ -68,6 +68,9 @@ abstract class Crud
 
             $sth->execute();
             $id = $pdo->lastInsertId();
+            if ($id == 0) {
+                return false;
+            }
             return $id;
         } catch (\PDOException $e) {
             return $e;

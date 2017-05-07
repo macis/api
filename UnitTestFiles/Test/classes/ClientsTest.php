@@ -86,7 +86,7 @@ class ClientsTest extends TestCase
             "payment_status" => "Ok"
         );
         $ret = Clients::post($post);
-        $this->assertTrue($ret == 0);
+        $this->assertFalse($ret);
     }
 
     /**
