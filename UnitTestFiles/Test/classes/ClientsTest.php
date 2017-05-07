@@ -170,5 +170,16 @@ class ClientsTest extends TestCase
         $this->assertCount(31, $ret);
     }
 
+    /**
+     * Tests delete
+     */
+    public function testDeleteOk()
+    {
+        // small hack, sorry
+        $_SESSION['user']["id_organization"] = 1;
+        $ret = Clients::delete(1);
+        $this->assertTrue( $ret == 1);
+    }
+
 }
 

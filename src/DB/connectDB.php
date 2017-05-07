@@ -18,10 +18,15 @@ class ConnectDB
     /**
      * @return bool|\PDO
      */
-    public static function getPDO() {
+    public static function getPDO($selfconfig = true) {
 
         $config = require __DIR__ . '/../settings.php';
         $config = $config['settings'];
+        if (!$selfconfig) {
+            $config['db']['host'] = "127.0.0.1";
+            $config['db']['user'] = "";
+            $config['db']['pass'] = "";
+        }
 
         try {
             self::$pdo = new \PDO(
