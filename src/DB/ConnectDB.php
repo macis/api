@@ -33,7 +33,6 @@ class ConnectDB
                 "mysql:dbname=".$config['db']['dbname'].";host=".$config['db']['host'].";charset=".$config['db']['charset'],
                 $config['db']['user'],
                 $config['db']['pass']);
-
         } catch (\PDOException $e) {
             throw new Exception('MYSQL ERROR : '.$e->getMessage());
         }

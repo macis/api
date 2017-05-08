@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 $app->add(new \Slim\Middleware\HttpBasicAuthentication([
     "path" => "/",
     "realm" => "Protected",
-
+    "secure" => false,
     // perhaps the following need to be rewrited
     "authenticator" => new PdoAuthenticator([
         "pdo" => \DB\ConnectDB::getPDO(),

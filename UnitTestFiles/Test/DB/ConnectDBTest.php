@@ -1,7 +1,6 @@
 <?php
 namespace UnitTestFiles\Test\DB;
 use PHPUnit\Framework\TestCase;
-use macis\classes\Clients as Clients;
 /**
  * Created by PhpStorm.
  * User: Wilfried
@@ -21,5 +20,6 @@ class ConnectDBTest extends TestCase
         $this->expectException("Exception");
         $this->expectExceptionMessageRegExp('/^MYSQL ERROR/');
         $ret = \DB\ConnectDB::getPDO(false);
+        $this->assertNull($ret);
     }
 }
