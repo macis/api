@@ -51,7 +51,7 @@ class RoutesTest extends TestCase
 
     public function testDeleteClient()
     {
-        $ret = $this->executeQuery('DELETE','/client/2');
+        $ret = $this->executeQuery('DELETE','/client/1');
         $this->assertArrayHasKey('client', $ret['content']);
         $this->assertTrue($ret['content']['client']);
     }
