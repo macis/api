@@ -1,14 +1,14 @@
 <?php
 namespace UnitTestFiles\Test;
 use PHPUnit\Framework\TestCase;
-use Slim\Environment;
+
 /**
  * Created by PhpStorm.
  * User: Wilfried
  * Date: 08/05/2017
  * Time: 12:17
  */
-class routesTest extends TestCase
+class RoutesTest extends TestCase
 {
 
     private function _execute(string $method = "GET" , string $route = "/", array $params = array())
