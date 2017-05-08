@@ -9,7 +9,6 @@ if (PHP_SAPI == 'cli-server') {
     }
 }
 
-
 require __DIR__ . '/../vendor/autoload.php';
 
 if(!headers_sent()){
@@ -31,3 +30,4 @@ require __DIR__ . '/../src/routes.php';
 
 // Run app
 $app->run();
+
