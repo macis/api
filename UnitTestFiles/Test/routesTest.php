@@ -17,7 +17,7 @@ class RoutesTest extends TestCase
         $_SERVER['PHP_AUTH_PW'] = 't00r';
         $_SERVER['REQUEST_URI'] = $route;
         $_SERVER['REQUEST_METHOD'] = $method;
-        $_GET = $params;
+        $_REQUEST = $params;
         ob_start();
         include 'web/index.php';
         $return = array();
@@ -47,13 +47,7 @@ class RoutesTest extends TestCase
         $ret = $this->executeQuery('GET','/client/1');
         $this->assertArrayHasKey('client', $ret['content']);
         $this->assertArrayHasKey('id', $ret['content']['client']);
-    }
-
-    public function testDeleteClient()
-    {
-        $ret = $this->executeQuery('DELETE','/client/1');
-        $this->assertArrayHasKey('client', $ret['content']);
-        $this->assertTrue($ret['content']['client']);
+        $this->assertTrue($ret['content']['client']['id'] == 1);
     }
 
 }
