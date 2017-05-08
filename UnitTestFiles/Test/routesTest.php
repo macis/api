@@ -23,7 +23,7 @@ class RoutesTest extends TestCase
         $return = array();
         $return['_session'] = $_SESSION;
         $return['_request'] = $_REQUEST;
-        $return['content'] = ob_get_clean();
+        $return['content'] = json_decode(ob_get_clean(), true);
         return $return;
     }
 
@@ -37,20 +37,23 @@ class RoutesTest extends TestCase
 
     public function testGetClients()
     {
-        $args = array();
-        $ret = $this->executeQuery('GET','/clients', $args);
-        $content = json_decode($ret['content'], true);
-        $this->assertCount(3, $content); // passes
-        $this->assertTrue(count($content['clients']) > 0);
+        $ret = $this->executeQuery('GET','/clients');
+        $this->assertCount(3, $ret['content']); // passes
+        $this->assertTrue(count($ret['content']['clients']) > 0);
     }
 
     public function testGetClient()
     {
-        $args = array();
-        $ret = $this->executeQuery('GET','/client/1', $args);
-        $content = json_decode($ret['content'], true);
-        $this->assertArrayHasKey('client', $content);
-        $this->assertArrayHasKey('id', $content['client']);
+        $ret = $this->executeQuery('GET','/client/1');
+        $this->assertArrayHasKey('client', $ret['content']);
+        $this->assertArrayHasKey('id', $ret['content']['client']);
+    }
+
+    public function testDeleteClient()
+    {
+        $ret = $this->executeQuery('DELETE','/client/2');
+        $this->assertArrayHasKey('client', $ret['content']);
+        $this->assertTrue($ret['content']['client']);
     }
 
 }
