@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 class RoutesTest extends TestCase
 {
 
-    private function _execute(string $method = "GET" , string $route = "/", array $params = array())
+    private function _Execute(string $method = "GET" , string $route = "/", array $params = array())
     {
         $_SERVER['PHP_AUTH_USER'] = 'root';
         $_SERVER['PHP_AUTH_PW'] = 't00r';
