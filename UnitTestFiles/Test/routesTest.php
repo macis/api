@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 class RoutesTest extends TestCase
 {
 
-    private function _Execute(string $method = "GET" , string $route = "/", array $params = array())
+    private function _executeQuery(string $method = "GET" , string $route = "/", array $params = array())
     {
         $_SERVER['PHP_AUTH_USER'] = 'root';
         $_SERVER['PHP_AUTH_PW'] = 't00r';
@@ -38,7 +38,7 @@ class RoutesTest extends TestCase
     public function testGetClients()
     {
         $args = array();
-        $ret = $this->_execute('GET','/clients', $args);
+        $ret = $this->_executeQuery('GET','/clients', $args);
         $content = json_decode($ret['content'], true);
         $this->assertCount(3, $content); // passes
         $this->assertTrue(count($content['clients']) > 0);
@@ -47,7 +47,7 @@ class RoutesTest extends TestCase
     public function testGetClient()
     {
         $args = array();
-        $ret = $this->_execute('GET','/client/1', $args);
+        $ret = $this->_executeQuery('GET','/client/1', $args);
         $content = json_decode($ret['content'], true);
         $this->assertArrayHasKey('client', $content);
         $this->assertArrayHasKey('id', $content['client']);
