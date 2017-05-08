@@ -42,45 +42,6 @@ class RoutesTest extends TestCase
         $this->assertTrue(count($ret['content']['clients']) > 0);
     }
 
-//    public function testPostClient()
-//    {
-//        $post = array(
-//            "social_number" => "01000",
-//            "lastname" => "routetest",
-//            "birthname" => "php",
-//            "firstname" => "route",
-//            "title" => "Mr",
-//            "gender" => "Male",
-//            "birthdate" => "1979-01-01",
-//            "deathdate" => null,
-//            "email" => "email@domain.ext",
-//            "address" => "this is my address",
-//            "postal_code" => "01000",
-//            "city" => "city",
-//            "country" => "country",
-//            "phone" => "000 000 000",
-//            "phone_mobile" => "000 000 000",
-//            "phone_pro" => "000 000 000",
-//            "job" => "developper",
-//            "referal_medic" => "medic",
-//            "social_collect" => "collect",
-//            "social_insurance" => "insurance",
-//            "marital_status" => "Single",
-//            "referal_person" => "referal",
-//            "referal_person_phone" => "000 000 000",
-//            "comment" => "this is a very long comment",
-//            "history_medical" => "",
-//            "history_surgical" => "",
-//            "history_gynecological" => "",
-//            "history_family" => "",
-//            "allergy" => "",
-//            "payment_status" => "Ok"
-//        );
-//        $ret = $this->executeQuery('POST','/client', $post);
-//        print_r($ret);
-//    }
-
-
     public function testGetClient()
     {
         $ret = $this->executeQuery('GET','/client/1');
@@ -88,12 +49,5 @@ class RoutesTest extends TestCase
         $this->assertArrayHasKey('id', $ret['content']['client']);
         $this->assertTrue($ret['content']['client']['id'] == 1);
     }
-
-//    public function testDeleteClient()
-//    {
-//        $ret = $this->executeQuery('DELETE','/client/1');
-//        $this->assertArrayHasKey('client', $ret['content']);
-//        $this->assertTrue($ret['content']['client']);
-//    }
 
 }
