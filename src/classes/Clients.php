@@ -10,7 +10,6 @@ namespace macis\classes;
 
 class Clients
 {
-
     /**
      * @param $page
      * @param $search
