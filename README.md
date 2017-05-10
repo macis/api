@@ -30,3 +30,5 @@ You must use the basic http authorization to authenticate with user and password
 ![Sensiolabs Medal](https://insight.sensiolabs.com/projects/81827d46-2753-4b86-a065-a223214febc8/big.png)
 
 [![Build Status](https://travis-ci.org/macis/api.svg?branch=master)](https://travis-ci.org/macis/api)
+
+[![Coverage Status](https://coveralls.io/repos/github/macis/api/badge.svg?branch=master)](https://coveralls.io/github/macis/api?branch=master)
