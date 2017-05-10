@@ -8,12 +8,10 @@
 
 namespace macis\classes;
 
-
 class Users
 {
 
     public static function login($username, $password){
         return \Models\Users::getByUsername($username, $password);
     }
-
 }
