@@ -16,3 +16,5 @@ before_script:
   - composer update
 script:
   - vendor/bin/phpunit --configuration phpunit.travis.xml
+after_script:
+  - travis_retry php vendor/bin/coveralls -v

@@ -11,4 +11,12 @@
         <env name="MYSQL_PASSWORD" value=""/>
         <env name="MYSQL_DATABASE" value="demo"/>
     </php>
+    <filter>
+        <whitelist>
+            <directory>./src</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="./logs/clover.xml"/>
+    </logging>
 </phpunit>
