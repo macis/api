@@ -20,7 +20,6 @@ class CalendarsTest extends TestCase
         $this->assertTrue($ret > 0);
     }
 
-
     /**
      * Tests Put
      */
