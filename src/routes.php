@@ -48,3 +48,17 @@ $app->group('/client', function () {
         echo json_encode($json, JSON_PRETTY_PRINT);
     });
 });
+
+$app->group('/calendars', function () {
+
+});
+
+$app->group('/calendar', function(){
+    // One calendar
+    $this->get('/{id:[0-9]+}', function (Request $request, Response $response, $args) {
+        $id = $request->getAttribute('id');
+        $json['calendar'] = \macis\classes\Calendars::get($id);
+        $json['user'] = $_SESSION['user'];
+        echo json_encode($json, JSON_PRETTY_PRINT);
+    });
+});
